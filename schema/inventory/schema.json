@@ -1,0 +1,120 @@
+{
+  "domain": "inventory",
+  "description": "Warehouse inventory management system",
+  "database_name": "inventory-management",
+  "collections": {
+    "warehouses": {
+      "description": "Storage facilities and locations",
+      "fields": {
+        "_id": {
+          "type": "ObjectId",
+          "description": "Unique warehouse identifier",
+          "required": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Warehouse name",
+          "required": true,
+          "example": "Central Warehouse"
+        },
+        "location": {
+          "type": "string",
+          "description": "Physical address",
+          "required": true
+        },
+        "capacity": {
+          "type": "integer",
+          "description": "Maximum storage capacity",
+          "required": true
+        },
+        "is_active": {
+          "type": "boolean", 
+          "description": "Whether warehouse is operational",
+          "required": true,
+          "default": true
+        }
+      }
+    },
+    "items": {
+      "description": "Inventory items and stock levels",
+      "fields": {
+        "_id": {
+          "type": "ObjectId",
+          "description": "Unique item identifier",
+          "required": true
+        },
+        "sku": {
+          "type": "string",
+          "description": "Stock Keeping Unit identifier",
+          "required": true,
+          "unique": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Item name", 
+          "required": true
+        },
+        "warehouse": {
+          "type": "ObjectId",
+          "description": "Reference to warehouse location",
+          "required": true,
+          "ref": "warehouses"
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Current stock quantity",
+          "required": true,
+          "min_value": 0
+        },
+        "reorder_level": {
+          "type": "integer",
+          "description": "Minimum stock before reorder",
+          "required": true
+        },
+        "unit_cost": {
+          "type": "decimal",
+          "description": "Cost per unit",
+          "required": true,
+          "precision": "10,2"
+        },
+        "last_updated": {
+          "type": "datetime",
+          "description": "Last stock update timestamp",
+          "required": true
+        }
+      }
+    },
+    "transactions": {
+      "description": "Stock movement transactions",
+      "fields": {
+        "_id": {
+          "type": "ObjectId",
+          "description": "Unique transaction identifier",
+          "required": true
+        },
+        "item": {
+          "type": "ObjectId", 
+          "description": "Reference to inventory item",
+          "required": true,
+          "ref": "items"
+        },
+        "type": {
+          "type": "string",
+          "description": "Transaction type",
+          "required": true,
+          "enum": ["in", "out", "adjustment"]
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Quantity moved",
+          "required": true
+        },
+        "timestamp": {
+          "type": "datetime",
+          "description": "Transaction timestamp",
+          "required": true
+        }
+      }
+    }
+  }
+}

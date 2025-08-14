@@ -1,0 +1,61 @@
+{
+  "domain": "ecommerce",
+  "version": "1.0.0",
+  "display_name": "E-commerce Marketplace",
+  "description": "A comprehensive e-commerce platform with products, vendors, and categories",
+  
+  "settings": {
+    "enable_fuzzy_matching": true,
+    "fuzzy_threshold": 0.3,
+    "max_results_per_query": 100,
+    "enable_follow_up_suggestions": true,
+    "enable_brand_context_preservation": true,
+    "default_sort_order": "created_at",
+    "currency_symbol": "",
+    "date_format": "YYYY-MM-DD HH:mm:ss"
+  },
+
+  "supported_queries": [
+    "product_search",
+    "price_queries", 
+    "inventory_status",
+    "vendor_listings",
+    "category_analysis",
+    "stock_management",
+    "featured_products"
+  ],
+
+  "brand_detection": {
+    "enabled": true,
+    "supported_brands": [
+      "motorola",
+      "samsung", 
+      "apple",
+      "vivo",
+      "xiaomi",
+      "oneplus",
+      "oppo"
+    ]
+  },
+
+  "response_formatting": {
+    "show_record_counts": true,
+    "show_execution_time": true,
+    "include_follow_up_suggestions": true,
+    "table_max_columns": 6,
+    "table_max_rows": 50
+  },
+
+  "security": {
+    "require_active_filter": true,
+    "hide_inactive_products": true,
+    "hide_inactive_users": true,
+    "hide_inactive_categories": true
+  },
+
+  "mongodb_config": {
+    "default_timeout": 5000,
+    "max_pipeline_stages": 20,
+    "enable_explain": false
+  }
+}

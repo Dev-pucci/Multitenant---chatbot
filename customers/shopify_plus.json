@@ -1,0 +1,26 @@
+{
+  "customer_id": "shopify_plus",
+  "name": "Shopify Plus Store",
+  "domain": "ecommerce", 
+  "database_name": "shopify_plus_ecommerce",
+  "status": "active",
+  "created_at": "2025-01-15T12:00:00",
+  "config": {
+    "mongodb_uri": "mongodb://127.0.0.1:27017",
+    "company_details": {
+      "industry": "Multi-Category E-commerce",
+      "size": "Enterprise",
+      "location": "Global"
+    },
+    "features": {
+      "enable_fuzzy_search": true,
+      "enable_advanced_analytics": true,
+      "enable_multi_language": true,
+      "enable_recommendation_engine": true
+    },
+    "branding": {
+      "primary_color": "#95bf47", 
+      "company_logo": "https://shopify-plus-store.com/logo.png"
+    }
+  }
+}

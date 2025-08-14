@@ -1,0 +1,31 @@
+{
+  "domain": "inventory", 
+  "version": "1.0.0",
+  "display_name": "Inventory Management System",
+  "description": "Warehouse and stock management platform",
+  
+  "settings": {
+    "enable_fuzzy_matching": true,
+    "fuzzy_threshold": 0.4,
+    "max_results_per_query": 200,
+    "enable_follow_up_suggestions": true,
+    "enable_low_stock_alerts": true,
+    "default_sort_order": "last_updated",
+    "currency_symbol": "$",
+    "date_format": "MM/DD/YYYY"
+  },
+
+  "supported_queries": [
+    "stock_levels",
+    "low_stock_alerts", 
+    "warehouse_capacity",
+    "item_search",
+    "transaction_history",
+    "reorder_reports"
+  ],
+
+  "alerts": {
+    "low_stock_threshold": "reorder_level",
+    "critical_stock_threshold": 5
+  }
+}

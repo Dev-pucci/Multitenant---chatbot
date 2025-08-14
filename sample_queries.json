@@ -1,0 +1,117 @@
+{
+  "all_active_products": {
+    "collection": "products",
+    "pipeline": [
+      {
+        "$match": {
+          "is_active": true
+        }
+      },
+      {
+        "$lookup": {
+          "from": "categories",
+          "localField": "category",
+          "foreignField": "_id",
+          "as": "category_info"
+        }
+      },
+      {
+        "$lookup": {
+          "from": "users",
+          "localField": "vendor",
+          "foreignField": "_id",
+          "as": "vendor_info"
+        }
+      },
+      {
+        "$project": {
+          "name": 1,
+          "price": 1,
+          "stock_quantity": 1,
+          "category_name": {
+            "$arrayElemAt": [
+              "$category_info.name",
+              0
+            ]
+          },
+          "vendor_name": {
+            "$arrayElemAt": [
+              "$vendor_info.first_name",
+              0
+            ]
+          }
+        }
+      },
+      {
+        "$limit": 10
+      }
+    ]
+  },
+  "featured_products": {
+    "collection": "products",
+    "pipeline": [
+      {
+        "$match": {
+          "featured": true,
+          "is_active": true
+        }
+      },
+      {
+        "$project": {
+          "name": 1,
+          "price": 1,
+          "image_url": 1
+        }
+      }
+    ]
+  },
+  "products_by_price_range": {
+    "collection": "products",
+    "pipeline": [
+      {
+        "$match": {
+          "price": {
+            "$gte": 1000,
+            "$lte": 10000
+          },
+          "is_active": true
+        }
+      },
+      {
+        "$project": {
+          "name": 1,
+          "price": 1
+        }
+      },
+      {
+        "$sort": {
+          "price": 1
+        }
+      }
+    ]
+  },
+  "low_stock_products": {
+    "collection": "products",
+    "pipeline": [
+      {
+        "$match": {
+          "stock_quantity": {
+            "$lt": 10
+          },
+          "is_active": true
+        }
+      },
+      {
+        "$project": {
+          "name": 1,
+          "stock_quantity": 1
+        }
+      },
+      {
+        "$sort": {
+          "stock_quantity": 1
+        }
+      }
+    ]
+  }
+}

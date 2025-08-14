@@ -1,0 +1,212 @@
+{
+  "domain": "ecommerce",
+  "description": "E-commerce marketplace platform",
+  "database_name": "ecommerce-marketplace",
+  "collections": {
+    "categories": {
+      "description": "Product categories for organization and filtering",
+      "fields": {
+        "_id": {
+          "type": "ObjectId",
+          "description": "Unique category identifier",
+          "required": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Category display name",
+          "required": true,
+          "max_length": 100,
+          "example": "Electronics"
+        },
+        "slug": {
+          "type": "string", 
+          "description": "URL-friendly category identifier",
+          "required": true,
+          "unique": true,
+          "example": "electronics"
+        },
+        "description": {
+          "type": "text",
+          "description": "Detailed category description",
+          "required": false
+        },
+        "is_active": {
+          "type": "boolean",
+          "description": "Whether category is currently active",
+          "required": true,
+          "default": true
+        },
+        "created_at": {
+          "type": "datetime",
+          "description": "Category creation timestamp",
+          "required": true
+        },
+        "updated_at": {
+          "type": "datetime", 
+          "description": "Last modification timestamp",
+          "required": true
+        }
+      }
+    },
+    "users": {
+      "description": "User accounts including vendors and customers",
+      "fields": {
+        "_id": {
+          "type": "ObjectId",
+          "description": "Unique user identifier",
+          "required": true
+        },
+        "username": {
+          "type": "string",
+          "description": "Unique username for login",
+          "required": true,
+          "unique": true,
+          "max_length": 50
+        },
+        "email": {
+          "type": "email",
+          "description": "User email address",
+          "required": true,
+          "unique": true
+        },
+        "first_name": {
+          "type": "string",
+          "description": "User's first name",
+          "required": true,
+          "max_length": 50
+        },
+        "last_name": {
+          "type": "string",
+          "description": "User's last name", 
+          "required": true,
+          "max_length": 50
+        },
+        "user_type": {
+          "type": "string",
+          "description": "Type of user account",
+          "required": true,
+          "enum": ["customer", "vendor", "admin"],
+          "example": "vendor"
+        },
+        "is_active": {
+          "type": "boolean",
+          "description": "Whether user account is active",
+          "required": true,
+          "default": true
+        },
+        "created_at": {
+          "type": "datetime",
+          "description": "Account creation timestamp",
+          "required": true
+        },
+        "updated_at": {
+          "type": "datetime",
+          "description": "Last modification timestamp", 
+          "required": true
+        }
+      }
+    },
+    "products": {
+      "description": "Product catalog with inventory and pricing information",
+      "fields": {
+        "_id": {
+          "type": "ObjectId",
+          "description": "Unique product identifier",
+          "required": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Product display name",
+          "required": true,
+          "max_length": 200,
+          "example": "Motorola Moto G45"
+        },
+        "slug": {
+          "type": "string",
+          "description": "URL-friendly product identifier", 
+          "required": true,
+          "unique": true
+        },
+        "description": {
+          "type": "text",
+          "description": "Detailed product description",
+          "required": true
+        },
+        "category": {
+          "type": "ObjectId",
+          "description": "Reference to product category",
+          "required": true,
+          "ref": "categories"
+        },
+        "vendor": {
+          "type": "ObjectId", 
+          "description": "Reference to vendor/seller",
+          "required": true,
+          "ref": "users"
+        },
+        "price": {
+          "type": "decimal",
+          "description": "Product price in currency",
+          "required": true,
+          "precision": "10,2",
+          "min_value": 0,
+          "max_value": 99999999.99,
+          "example": 25999.00
+        },
+        "stock_quantity": {
+          "type": "integer",
+          "description": "Number of units available for sale",
+          "required": true,
+          "min_value": 0,
+          "example": 25
+        },
+        "in_stock": {
+          "type": "boolean",
+          "description": "Whether product is currently in stock",
+          "required": true,
+          "computed": "stock_quantity > 0"
+        },
+        "is_active": {
+          "type": "boolean",
+          "description": "Whether product is active and visible",
+          "required": true,
+          "default": true
+        },
+        "featured": {
+          "type": "boolean",
+          "description": "Whether product is featured/promoted",
+          "required": true,
+          "default": false
+        },
+        "created_at": {
+          "type": "datetime",
+          "description": "Product creation timestamp",
+          "required": true
+        },
+        "updated_at": {
+          "type": "datetime",
+          "description": "Last modification timestamp",
+          "required": true
+        }
+      }
+    }
+  },
+  "indexes": [
+    {"collection": "categories", "fields": {"slug": 1}, "unique": true},
+    {"collection": "categories", "fields": {"name": 1}},
+    {"collection": "categories", "fields": {"is_active": 1}},
+    {"collection": "users", "fields": {"email": 1}, "unique": true},
+    {"collection": "users", "fields": {"username": 1}, "unique": true},
+    {"collection": "users", "fields": {"user_type": 1}},
+    {"collection": "users", "fields": {"is_active": 1}},
+    {"collection": "products", "fields": {"slug": 1}, "unique": true},
+    {"collection": "products", "fields": {"name": 1}},
+    {"collection": "products", "fields": {"category": 1, "is_active": 1}},
+    {"collection": "products", "fields": {"vendor": 1, "is_active": 1}},
+    {"collection": "products", "fields": {"featured": 1, "is_active": 1}},
+    {"collection": "products", "fields": {"in_stock": 1, "is_active": 1}},
+    {"collection": "products", "fields": {"price": 1}},
+    {"collection": "products", "fields": {"stock_quantity": 1}},
+    {"collection": "products", "fields": {"created_at": 1}}
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "customer_id": "techmart",
+  "name": "TechMart Electronics",
+  "domain": "ecommerce",
+  "database_name": "techmart_ecommerce",
+  "status": "active",
+  "created_at": "2025-01-15T10:00:00",
+  "config": {
+    "mongodb_uri": "mongodb://127.0.0.1:27017",
+    "company_details": {
+      "industry": "Electronics Retail",
+      "size": "Medium",
+      "location": "USA"
+    },
+    "features": {
+      "enable_fuzzy_search": true,
+      "enable_price_tracking": true,
+      "enable_vendor_analytics": true
+    },
+    "branding": {
+      "primary_color": "#007bff",
+      "company_logo": "https://techmart.com/logo.png"
+    }
+  }
+}

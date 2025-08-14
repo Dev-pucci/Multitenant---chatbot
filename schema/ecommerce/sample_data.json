@@ -1,0 +1,138 @@
+{
+  "categories": [
+    {
+      "name": "Electronics",
+      "slug": "electronics",
+      "description": "Latest electronic devices and gadgets",
+      "is_active": true
+    },
+    {
+      "name": "Smartphones",
+      "slug": "smartphones", 
+      "description": "Mobile phones and accessories",
+      "parent": "Electronics",
+      "is_active": true
+    },
+    {
+      "name": "Beverages",
+      "slug": "beverages",
+      "description": "Drinks and beverages",
+      "is_active": true
+    },
+    {
+      "name": "Alcoholic Beverages",
+      "slug": "alcoholic-beverages",
+      "description": "Alcoholic drinks including spirits, wine, and beer",
+      "parent": "Beverages",
+      "is_active": true
+    }
+  ],
+
+  "users": [
+    {
+      "username": "vendor_electronics",
+      "email": "electronics@marketplace.com",
+      "first_name": "Tech",
+      "last_name": "Vendor",
+      "user_type": "vendor",
+      "is_active": true
+    },
+    {
+      "username": "vendor_beverages",
+      "email": "drinks@marketplace.com", 
+      "first_name": "Beverage",
+      "last_name": "Supplier",
+      "user_type": "vendor",
+      "is_active": true
+    },
+    {
+      "username": "admin_user",
+      "email": "admin@marketplace.com",
+      "first_name": "Admin",
+      "last_name": "User",
+      "user_type": "admin",
+      "is_active": true
+    }
+  ],
+
+  "products": [
+    {
+      "name": "Vivo Y400 Pro",
+      "slug": "vivo-y400-pro",
+      "description": "The Vivo Y400 Pro features a stunning 6.77\" AMOLED display with 120Hz refresh rate and 1300 nits peak brightness. Powered by Android 15 with Funtouch 15, it offers 8GB RAM and 128GB/256GB storage options. The device boasts a 50MP main camera with f/1.8 aperture and a 2MP depth sensor. With a 5500mAh battery and 90W fast charging, this phone delivers exceptional performance and battery life. Key specs: 162g weight, 7.5mm thickness, IP65 dust/water resistance, Nano-SIM support.",
+      "category": "Smartphones",
+      "vendor": "vendor_electronics",
+      "price": 51999.00,
+      "stock_quantity": 15,
+      "in_stock": true,
+      "image_url": "https://fdn2.gsmarena.com/vv/pics/vivo/vivo-y400-pro-1.jpg",
+      "featured": true,
+      "is_active": true
+    },
+    {
+      "name": "Motorola Moto G86",
+      "slug": "motorola-moto-g86",
+      "description": "The Motorola Moto G86 combines performance with style, featuring a vibrant 6.6\" Max Vision display. Built with Qualcomm processor and running Android 13, it offers smooth performance for daily tasks. The advanced camera system captures stunning photos with its 50MP main sensor. Long-lasting 5000mAh battery ensures all-day usage. Sleek design with premium materials and reliable build quality.",
+      "category": "Smartphones",
+      "vendor": "vendor_electronics",
+      "price": 18999.00,
+      "stock_quantity": 25,
+      "in_stock": true,
+      "image_url": "https://fdn2.gsmarena.com/vv/pics/motorola/motorola-moto-g86-1.jpg",
+      "featured": false,
+      "is_active": true
+    },
+    {
+      "name": "Samsung Galaxy A55",
+      "slug": "samsung-galaxy-a55",
+      "description": "Samsung Galaxy A55 delivers premium features with a stunning Super AMOLED display and versatile triple camera system. Powered by Exynos processor with ample RAM for multitasking. Features include fast charging, water resistance, and Samsung's One UI experience. Perfect blend of performance, design, and value.",
+      "category": "Smartphones",
+      "vendor": "vendor_electronics", 
+      "price": 35999.00,
+      "stock_quantity": 20,
+      "in_stock": true,
+      "image_url": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a55-1.jpg",
+      "featured": true,
+      "is_active": true
+    },
+    {
+      "name": "iPhone 15",
+      "slug": "iphone-15",
+      "description": "The iPhone 15 features the advanced A16 Bionic chip, delivering incredible performance and efficiency. With a stunning 6.1\" Super Retina XDR display and Dynamic Island, every interaction feels magical. The improved camera system captures beautiful photos in any light, while the durable design includes Ceramic Shield front glass.",
+      "category": "Smartphones",
+      "vendor": "vendor_electronics",
+      "price": 79999.00,
+      "stock_quantity": 8,
+      "in_stock": true,
+      "image_url": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-1.jpg",
+      "featured": true,
+      "is_active": true
+    },
+    {
+      "name": "Jameson Irish Whiskey",
+      "slug": "jameson-irish-whiskey",
+      "description": "Jameson Irish Whiskey is a blended Irish whiskey produced by the Irish Distillers subsidiary of Pernod Ricard. Originally one of the six main Dublin Whiskeys, Jameson is distilled at the New Midleton Distillery in County Cork, Ireland. Triple distilled and aged for a minimum of 4 years, it offers a smooth, balanced taste with hints of vanilla and honey.",
+      "category": "Alcoholic Beverages",
+      "vendor": "vendor_beverages",
+      "price": 2499.00,
+      "stock_quantity": 50,
+      "in_stock": true,
+      "image_url": "https://example.com/jameson-irish-whiskey.jpg",
+      "featured": false,
+      "is_active": true
+    },
+    {
+      "name": "OnePlus 12",
+      "slug": "oneplus-12",
+      "description": "OnePlus 12 features the latest Snapdragon processor with cutting-edge performance. The 6.82\" LTPO AMOLED display offers incredible visuals with 120Hz refresh rate. Advanced camera system with Hasselblad partnership delivers professional photography results. Fast charging technology and premium build quality make this a flagship device.",
+      "category": "Smartphones",
+      "vendor": "vendor_electronics",
+      "price": 64999.00,
+      "stock_quantity": 12,
+      "in_stock": true,
+      "image_url": "https://fdn2.gsmarena.com/vv/pics/oneplus/oneplus-12-1.jpg",
+      "featured": false,
+      "is_active": true
+    }
+  ]
+}
